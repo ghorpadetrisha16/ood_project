@@ -10,10 +10,10 @@ package edu.neu.csye6200.model;
  */
 public class Parent {
     
-   private int ParentId;
-   private String ParentName;
-   private String ParentAddress;
-   private String ParentPhoneNo;
+   private int parentId;
+   private String parentName;
+   private String parentAddress;
+   private String parentPhoneNo;
    
    public Parent() {
         super();
@@ -22,42 +22,42 @@ public class Parent {
 
     public Parent(int parentId, String parentName, String parentAddress, String parentPhoneNo) {
 	super();
-	ParentId = parentId;
-        ParentName = parentName;
-	ParentAddress = parentAddress;
-	ParentPhoneNo = parentPhoneNo;
+	this.parentId = parentId;
+        this.parentName = parentName;
+	this.parentAddress = parentAddress;
+	this.parentPhoneNo = parentPhoneNo;
 	}
 
     public int getParentId() {
-	return ParentId;
+	return parentId;
 	}
 
     public void setParentId(int parentId) {
-	ParentId = parentId;
+	this.parentId = parentId;
 	}
 
     public String getParentName() {
-	return ParentName;
+	return parentName;
 	}
 
     public void setParentName(String parentName) {
-	ParentName = parentName;
+	this.parentName = parentName;
 	}
 
     public String getParentAddress() {
-	return ParentAddress;
+	return parentAddress;
 	}
 
     public void setParentAddress(String parentAddress) {
-	ParentAddress = parentAddress;
+	this.parentAddress = parentAddress;
 	}
 
     public String getParentPhoneNo() {
-	return ParentPhoneNo;
+	return parentPhoneNo;
 	}
 
     public void setParentPhoneNo(String parentPhoneNo) {
-	ParentPhoneNo = parentPhoneNo;
+	this.parentPhoneNo = parentPhoneNo;
 	}
 	    
 	   

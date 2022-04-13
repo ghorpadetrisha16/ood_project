@@ -10,19 +10,19 @@ package edu.neu.csye6200.model;
  */
 public class Student {
     
-    private int StudentId;
-    private String StudentName;
-    private int Age;
-    private String DateofBirth;
-    private double Gpa;
+    private int studentId;
+    private String studentName;
+    private int age;
+    private String dateofBirth;
+    private double gpa;
     
     public Student(int studentId, String studentName, int age, String dateofBirth, double gpa) {
 			super();
-			StudentId = studentId;
-			StudentName = studentName;
-			Age = age;
-			DateofBirth = dateofBirth;
-			Gpa = gpa;
+			this.studentId = studentId;
+			this.studentName = studentName;
+			this.age = age;
+			this.dateofBirth = dateofBirth;
+			this.gpa = gpa;
 		}
 
     public Student() {
@@ -31,43 +31,43 @@ public class Student {
 		}
    
     public int getStudentId() {
-	return StudentId;
+	return studentId;
 		}
 
     public void setStudentId(int studentId) {
-	StudentId = studentId;
+	this.studentId = studentId;
 		}
 
     public String getStudentName() {
-	return StudentName;
+	return studentName;
 		}
 
     public void setStudentName(String studentName) {
-	StudentName = studentName;
+	this.studentName = studentName;
 		}
 
    public int getAge() {
-	return Age;
+	return age;
 		}
 
     public void setAge(int age) {
-	Age = age;
+	this.age = age;
 		}
 
     public String getDateofBirth() {
-	return DateofBirth;
+	return dateofBirth;
 		}
 
     public void setDateofBirth(String dateofBirth) {
-	DateofBirth = dateofBirth;
+	this.dateofBirth = dateofBirth;
 		}
 
     public double getGpa() {
-	return Gpa;
+	return gpa;
 		}
 
     public void setGpa(double gpa) {
-	Gpa = gpa;
+	this.gpa = gpa;
 		}
 	   
 }
