@@ -9,65 +9,87 @@ package edu.neu.csye6200.model;
  * @author eswar
  */
 public class Student {
-    
-    private int studentId;
-    private String studentName;
-    private int age;
-    private String dateofBirth;
-    private double gpa;
-    
-    public Student(int studentId, String studentName, int age, String dateofBirth, double gpa) {
-			super();
-			this.studentId = studentId;
-			this.studentName = studentName;
-			this.age = age;
-			this.dateofBirth = dateofBirth;
-			this.gpa = gpa;
-		}
 
-    public Student() {
-	super();
-	// TODO Auto-generated constructor stub
-		}
-   
-    public int getStudentId() {
-	return studentId;
-		}
+	private int studentId;
+	private String studentName;
+	private int age;
+	private String dateofBirth;
+	private double gpa;
 
-    public void setStudentId(int studentId) {
-	this.studentId = studentId;
-		}
+	{
+		studentId = -1;
+		studentName = "";
+		age = -1;
+		dateofBirth = "";
+		gpa = 0.0;
 
-    public String getStudentName() {
-	return studentName;
-		}
+	}
 
-    public void setStudentName(String studentName) {
-	this.studentName = studentName;
-		}
+	public Student(int studentId, String studentName, int age, String dateofBirth, double gpa) {
+		super();
+		this.studentId = studentId;
+		this.studentName = studentName;
+		this.age = age;
+		this.dateofBirth = dateofBirth;
+		this.gpa = gpa;
+	}
 
-   public int getAge() {
-	return age;
-		}
+	public Student(String studentName, String dateOfBirth, int age) {
+		super();
+		this.studentName = studentName;
+		this.dateofBirth = dateOfBirth;
+		this.age = age;
 
-    public void setAge(int age) {
-	this.age = age;
-		}
+	}
 
-    public String getDateofBirth() {
-	return dateofBirth;
-		}
+	public Student() {
+		super();
 
-    public void setDateofBirth(String dateofBirth) {
-	this.dateofBirth = dateofBirth;
-		}
+	}
 
-    public double getGpa() {
-	return gpa;
-		}
+	public int getStudentId() {
+		return studentId;
+	}
 
-    public void setGpa(double gpa) {
-	this.gpa = gpa;
-		}
-	   
+	public void setStudentId(int studentId) {
+		this.studentId = studentId;
+	}
+
+	public String getStudentName() {
+		return studentName;
+	}
+
+	public void setStudentName(String studentName) {
+		this.studentName = studentName;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public String getDateofBirth() {
+		return dateofBirth;
+	}
+
+	public void setDateofBirth(String dateofBirth) {
+		this.dateofBirth = dateofBirth;
+	}
+
+	public double getGpa() {
+		return gpa;
+	}
+
+	public void setGpa(double gpa) {
+		this.gpa = gpa;
+	}
+
+	public String generateRegisterQuery() {
+		return "INSERT INTO student (name, dob, age) VALUES(" + this.studentName + ", " + this.dateofBirth + ", "
+				+ this.age + ");";
+	}
+
 }

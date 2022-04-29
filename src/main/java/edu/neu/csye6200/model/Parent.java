@@ -67,20 +67,19 @@ public class Parent {
 	public void setParentPhoneNo(String parentPhoneNo) {
 		this.parentPhoneNo = parentPhoneNo;
 	}
-        
-        public int getStudentId(){
-            return student_id;
-        }
-        
-        public void setStudentId(int student_id){
-            this.student_id = student_id;
-        }
-        
+
+    public int getStudent_id() {
+        return student_id;
+    }
+
+    public void setStudent_id(int student_id) {
+        this.student_id = student_id;
+    }
         
         
 
 	public String generateRegisterQuery() {
-		return "INSERT INTO parent (name, address, phone, student_id) VALUES(" + this.parentName + ", " + this.parentAddress + ", "+ this.parentPhoneNo +", "
-				+ this.student_id + ");";
+		return "INSERT INTO parent (name, address, phone,student_id) VALUES(" + this.parentName + ", " + this.parentAddress + ", "
+				+ this.parentPhoneNo+", " +this.student_id+ ");";
 	}
 }

@@ -58,6 +58,35 @@ public class DB {
                 }
         }
 
+        public int update(String queryStatement) {
+                try {
+                        int rs = statement.executeUpdate(queryStatement);
+                        return rs;
+                } catch (Exception e) {
+                        System.out.print(e.toString());
+                        return -1;
+                }
+        }
+
+        public Statement getStatement() {
+                return statement;
+        }
+
+        public int getGeneratedKey() {
+                try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
+                        int primkey = -1;
+
+                        if (generatedKeys.next()) {
+                                primkey = generatedKeys.getInt(1);
+                        }
+
+                        return primkey;
+                } catch (SQLException e) {
+                        e.printStackTrace();
+                        return -1;
+                }
+        }
+
         /**
          * Singleton method to get instance
          * 
