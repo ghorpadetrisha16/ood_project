@@ -9,60 +9,78 @@ package edu.neu.csye6200.model;
  * @author akshaykumthimatad
  */
 public class Parent {
-    
-   private int parentId;
-   private String parentName;
-   private String parentAddress;
-   private String parentPhoneNo;
-   
-   public Parent() {
-        super();
-	// TODO Auto-generated constructor stub
+
+	private int parentId;
+	private String parentName;
+	private String parentAddress;
+	private String parentPhoneNo;
+        private int student_id;
+
+	public Parent() {
+		super();
+
 	}
 
-    public Parent(int parentId, String parentName, String parentAddress, String parentPhoneNo) {
-	super();
-	this.parentId = parentId;
-        this.parentName = parentName;
-	this.parentAddress = parentAddress;
-	this.parentPhoneNo = parentPhoneNo;
+	public Parent(String parentName, String parentAddress, String parentPhoneNo) {
+		super();
+		this.parentName = parentName;
+		this.parentAddress = parentAddress;
+		this.parentPhoneNo = parentPhoneNo;
 	}
 
-    public int getParentId() {
-	return parentId;
+	public Parent(int parentId, String parentName, String parentAddress, String parentPhoneNo) {
+		super();
+		this.parentId = parentId;
+		this.parentName = parentName;
+		this.parentAddress = parentAddress;
+		this.parentPhoneNo = parentPhoneNo;
 	}
 
-    public void setParentId(int parentId) {
-	this.parentId = parentId;
+	public int getParentId() {
+		return parentId;
 	}
 
-    public String getParentName() {
-	return parentName;
+	public void setParentId(int parentId) {
+		this.parentId = parentId;
 	}
 
-    public void setParentName(String parentName) {
-	this.parentName = parentName;
+	public String getParentName() {
+		return parentName;
 	}
 
-    public String getParentAddress() {
-	return parentAddress;
+	public void setParentName(String parentName) {
+		this.parentName = parentName;
 	}
 
-    public void setParentAddress(String parentAddress) {
-	this.parentAddress = parentAddress;
+	public String getParentAddress() {
+		return parentAddress;
 	}
 
-    public String getParentPhoneNo() {
-	return parentPhoneNo;
+	public void setParentAddress(String parentAddress) {
+		this.parentAddress = parentAddress;
 	}
 
-    public void setParentPhoneNo(String parentPhoneNo) {
-	this.parentPhoneNo = parentPhoneNo;
+	public String getParentPhoneNo() {
+		return parentPhoneNo;
 	}
-	    
-	   
-	
-	    
-   
-    
+
+	public void setParentPhoneNo(String parentPhoneNo) {
+		this.parentPhoneNo = parentPhoneNo;
+	}
+        
+        public int getStudentId(){
+            return student_id;
+        }
+        
+        public void setStudentId(int student_id){
+            this.student_id = student_id;
+        }
+        
+        
+        
+
+	public String generateRegisterQuery() {
+		return "INSERT INTO parent (name, address, phone, student_id) VALUES(" + this.parentName + ", " + this.parentAddress + ", "+ this.parentPhoneNo +", "
+				+ this.student_id + ");";
+	}
 }
