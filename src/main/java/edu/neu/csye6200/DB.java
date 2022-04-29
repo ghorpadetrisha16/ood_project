@@ -60,7 +60,7 @@ public class DB {
 
         public int update(String queryStatement) {
                 try {
-                        int rs = statement.executeUpdate(queryStatement);
+                        int rs = statement.executeUpdate(queryStatement,Statement.RETURN_GENERATED_KEYS);
                         return rs;
                 } catch (Exception e) {
                         System.out.print(e.toString());

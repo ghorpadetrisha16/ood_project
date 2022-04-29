@@ -11,6 +11,7 @@ import java.util.Currency;
 import edu.neu.csye6200.DB;
 import edu.neu.csye6200.model.Parent;
 import edu.neu.csye6200.model.Student;
+import java.time.LocalDate;
 
 /**
  *
@@ -20,26 +21,28 @@ public class StudentController {
 
     private static StudentController studentController;
 
-    private int getAgeFromDOB(Date dob) {
-        return Period.between(dob.toLocalDate(), new Date(System.currentTimeMillis()).toLocalDate()).getYears();
+    private int getAgeFromDOB(LocalDate dob) {
+        return Period.between(dob, new Date(System.currentTimeMillis()).toLocalDate()).getYears();
     }
 
-    public void addStudentAndParent(String name, Date dob, String parentName, String parentPhone,
+    public void addStudentAndParent(String name, String dob, String parentName, String parentPhone,
             String parentAddress) {
 
         DB db = DB.getObj();
-
-        int age = getAgeFromDOB(dob);
+       
+        LocalDate dobFromString = LocalDate.parse(dob);
+        
+        int age = getAgeFromDOB(dobFromString);
         // create student obj
-        Student s = new Student(name, dob.toString(), age);
-        db.update(s.generateRegisterQuery());
-        int studentId = db.getGeneratedKey();
-
-        s.setStudentId(studentId);
-
+        Student s = new Student(name, dobFromString.toString(), age);
         Parent p = new Parent(parentName, parentAddress, parentPhone);
-        p.setStudent_id(studentId);
+        
         db.update(p.generateRegisterQuery());
+        int parentId = db.getGeneratedKey();
+
+        s.setParentId(parentId);
+        
+        db.update(s.generateRegisterQuery());
 
     }
 
