@@ -7,6 +7,12 @@ package edu.neu.csye6200.controllers;
 import java.sql.*;
 import edu.neu.csye6200.DB;
 import edu.neu.csye6200.model.Teacher;
+import edu.neu.csye6200.model.Teacher;
+import java.util.*;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -30,20 +36,59 @@ public class teacherController {
         this.teacherFlag = teacherFlag;
     }
     
-    public void viewTeachers() {
+    public ResultSet  viewTeachers() {
 
         
         
+        try {
+            Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            PreparedStatement stmt = conn.prepareStatement("select * from teacher");
+            Vector columnNames = new Vector();
+            Vector data = new Vector();
+            ResultSet rs = stmt.executeQuery();
+                JTable jtable = new JTable(buildTableModel(rs));
+             JOptionPane.showMessageDialog(null, new JScrollPane(jtable));
+           
+             
+        } catch (Exception e) {
+            System.out.print(e.toString());
+        }
+           return null; 
+        }
+
+    public static DefaultTableModel buildTableModel(ResultSet rs)
+        throws SQLException {
+
+    ResultSetMetaData metaData = rs.getMetaData();
+
+    // names of columns
+    Vector<String> columnNames = new Vector<String>();
+    int columnCount = metaData.getColumnCount();
+    for (int column = 1; column <= columnCount; column++) {
+        columnNames.add(metaData.getColumnName(column));
     }
 
+    // data of the table
+    Vector<Vector<Object>> data = new Vector<Vector<Object>>();
+    while (rs.next()) {
+        Vector<Object> vector = new Vector<Object>();
+        for (int columnIndex = 1; columnIndex <= columnCount; columnIndex++) {
+            vector.add(rs.getObject(columnIndex));
+        }
+        data.add(vector);
+    }
+
+    return new DefaultTableModel(data, columnNames);
+
+}
     public void register(Teacher teacher) {
 
         try {
             Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
-            PreparedStatement stmt = conn.prepareStatement("Insert into employee(fname,lname,emp_phone_no,emp_address) values(?,?,?,?)");
+            PreparedStatement stmt = conn.prepareStatement("Insert into teacher(fname,lname,emp_phone_no,emp_address) values(?,?,?,?)");
             stmt.setString(1, teacher.getFname());
             stmt.setString(2, teacher.getLname());
-            stmt.setString(3, teacher.getPhone());
+            stmt.setString(3, teacher.getPhoneNo());
             stmt.setString(4, teacher.getAddress());
             Boolean executed = stmt.execute();
             if (executed) {
@@ -51,30 +96,13 @@ public class teacherController {
             } else {
                 System.out.println("Record inserted");
             }
-            stmt = conn.prepareStatement("Insert into teacher(fname,lname,emp_phone_no,emp_address) values(?,?,?,?)");
+           
         } catch (Exception e) {
             System.out.print(e.toString());
         }
     }
     
-    public void insertTeacher(Teacher teacher)
-    {
-        try {
-            Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
-            PreparedStatement stmt = conn.prepareStatement("Insert into teacher(employee_id,credits,class_id) values(?,?,?)");
-            stmt.setString(1, teacher.getId());
-            stmt.setString(2, teacher.getCredits());
-            stmt.setString(3,teacher.);
-            Boolean executed = stmt.execute();
-            if (executed) {
-                System.out.println("Error");
-            } else {
-                System.out.println("Record inserted");
-            }
-            stmt = conn.prepareStatement("Insert into teacher(fname,lname,emp_phone_no,emp_address) values(?,?,?,?)");
-        } catch (Exception e) {
-            System.out.print(e.toString());
-        }
-        
-    }
+    
+    
+   
 }
