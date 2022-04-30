@@ -6,7 +6,6 @@ package edu.neu.csye6200.views;
 
 import edu.neu.csye6200.controllers.teacherController;
 import edu.neu.csye6200.model.Teacher;
-import edu.neu.csye6200.model.Teacher;
 import java.awt.Color;
 
 /**
@@ -234,7 +233,7 @@ public class TeacherRegister extends javax.swing.JFrame {
             teacher.setAddress(jTextArea1.getText());
             teacherController teachercontroller = new teacherController();
             teachercontroller.register(teacher);
-          
+            
         
 
         // TODO add your handling code here:

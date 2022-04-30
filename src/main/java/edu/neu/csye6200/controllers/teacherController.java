@@ -101,7 +101,92 @@ public class teacherController {
             System.out.print(e.toString());
         }
     }
-    
+    public void delete(Teacher teacher) {
+
+        try {
+            Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            if(teacher.getEmployeeId()!=0){
+                PreparedStatement deleteByEmployeeID = conn.prepareStatement("DELETE FROM teacher WHERE employee_id=?");
+            deleteByEmployeeID.setString(1,String.valueOf(teacher.getEmployeeId()));
+            Boolean executed = deleteByEmployeeID.execute();
+            if (executed) {
+                System.out.println("Error");
+            } else {
+                System.out.println("Record deleted");
+            }
+            
+            }
+            
+           
+        } catch (Exception e) {
+            System.out.print(e.toString());
+        }
+    }
+    public void update(Teacher teacher) {
+
+        try {
+            Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            PreparedStatement updateFirstName=conn.prepareStatement("UPDATE teacher SET fname=? WHERE employee_id=?");
+            PreparedStatement updateLastName=conn.prepareStatement("UPDATE teacher SET lname=? WHERE employee_id=?");
+            PreparedStatement updatephoneNumber=conn.prepareStatement("UPDATE teacher SET emp_phone_no=? WHERE employee_id=?");
+            PreparedStatement updateAddress=conn.prepareStatement("UPDATE teacher SET emp_address=? WHERE employee_id=?");
+            PreparedStatement updateRating=conn.prepareStatement("UPDATE teacher SET emp_ratings=? WHERE employee_id=?");
+            if(teacher.getEmployeeId()!=0){
+                if (teacher.getFname().length()!=0) {
+                    updateFirstName.setString(1, teacher.getFname());
+                    updateFirstName.setString(2, String.valueOf(teacher.getEmployeeId()));
+                    Boolean executed = updateFirstName.execute();
+                    if (executed) {
+                        System.out.println("Error");
+                    } else {
+                        System.out.println("updated firstname");
+                    }
+                }
+                if (teacher.getLname().length()!=0) {
+                    updateLastName.setString(1, teacher.getLname());
+                    updateLastName.setString(2, String.valueOf(teacher.getEmployeeId()));
+                    Boolean executed = updateLastName.execute();
+                    if (executed) {
+                        System.out.println("Error");
+                    } else {
+                        System.out.println("updated lastname");
+                    }
+                }
+                if (teacher.getPhoneNo().length()!=0) {
+                    updatephoneNumber.setString(1, teacher.getPhoneNo());
+                    updatephoneNumber.setString(2, String.valueOf(teacher.getEmployeeId()));
+                    Boolean executed = updatephoneNumber.execute();
+                    if (executed) {
+                        System.out.println("Error");
+                    } else {
+                        System.out.println("updated phonenumber");
+                    }
+                }
+                if (teacher.getAddress().length()!=0) {
+                    updateAddress.setString(1, teacher.getAddress());
+                    updateAddress.setString(2, String.valueOf(teacher.getEmployeeId()));
+                    Boolean executed = updateAddress.execute();
+                    if (executed) {
+                        System.out.println("Error");
+                    } else {
+                        System.out.println("updated address");
+                    }
+                }
+                if (teacher.getRating() != 0.0 ) {
+                    updateRating.setString(1, String.valueOf(teacher.getRating()));
+                    updateRating.setString(2, String.valueOf(teacher.getEmployeeId()));
+                    Boolean executed = updateRating.execute();
+                    if (executed) {
+                        System.out.println("Error");
+                    } else {
+                        System.out.println("updated rating");
+                    }
+                }
+            }     
+        } catch (Exception e) {
+            System.out.print(e.toString());
+        }
+    }
     
     
    
