@@ -25,7 +25,7 @@ public class DB {
 
         public static DB db;
 
-        DB() {
+         DB() {
                 createConnection();
         }
 
@@ -34,6 +34,7 @@ public class DB {
          */
         private void createConnection() {
                 try {
+                    
                         conn = DriverManager.getConnection(DB_URL, USER, PASS);
                         statement = conn.createStatement();
 

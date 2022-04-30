@@ -7,6 +7,15 @@ public class Teacher
     private String lname;
     private String phone;
     private String address;
+    private String credits;
+
+    public String getCredits() {
+        return credits;
+    }
+
+    public void setCredits(String credits) {
+        this.credits = credits;
+    }
     
     public Teacher(){}
 
