@@ -11,6 +11,8 @@ import java.util.Currency;
 import edu.neu.csye6200.DB;
 import edu.neu.csye6200.model.Parent;
 import edu.neu.csye6200.model.Student;
+import java.sql.PreparedStatement;
+import java.time.LocalDate;
 
 /**
  *
@@ -49,5 +51,50 @@ public class StudentController {
         }
         return studentController;
     }
+    
+    public void updateStudentAndParent(int studentId, String studentName, String dateofBirth, double gpa,
+            int parentId, String parentName, String parentAddress, String parentPhoneNo) throws InterruptedException{
+        
+        DB db = DB.getObj();
+        
+        Student s = new Student(studentId, studentName, dateofBirth, gpa);
+        Parent p = new Parent(parentId,parentName, parentAddress, parentPhoneNo);
+        
+        Date dob = Date.valueOf(dateofBirth);
+        
+        int age = getAgeFromDOB(dob);
+        
+        s.setAge(age);
+        
+        db.update(s.updateStudentTable());
+        Thread.sleep(200);
+        db.update(p.updateParentTable()); 
+        
+         
+        
+    }
+    
+    public void showStudentAndParentTable(int studentId, String studentName, String dateofBirth, double gpa,
+            int parentId, String parentName, String parentAddress, String parentPhoneNo){
+        
+        DB db = DB.getObj();
+        
+        Student s = new Student(studentId, studentName, dateofBirth, gpa);
+        Parent p = new Parent(parentId,parentName, parentAddress, parentPhoneNo);
+        
+        Date dob = Date.valueOf(dateofBirth);
+        
+        int age = getAgeFromDOB(dob);
+        
+        s.setAge(age);
+        
+        db.query(s.showStudentTable());
+        
+//        PreparedStatement insert = 
+//        ResultSetMetaData rss = 
+        
+        
+    }
+     
 
 }

@@ -82,4 +82,13 @@ public class Parent {
 		return "INSERT INTO parent (name, address, phone,student_id) VALUES(" + this.parentName + ", " + this.parentAddress + ", "
 				+ this.parentPhoneNo+", " +this.student_id+ ");";
 	}
+        
+        public String updateParentTable(){
+                return "UPDATE parent SET " +
+                         " p_name = " +"'" +this.parentName+"'" +
+                        ", address = " +"'"+ this.parentAddress +"'" +
+                        ", phone = " +"'"+ this.parentPhoneNo +  "'" +
+                        " WHERE parent_id =" +"'"+ this.parentId +"'" + ";";
+        }
+        
 }
