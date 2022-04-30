@@ -8,29 +8,59 @@ package edu.neu.csye6200.model;
  *
  * @author Tarun
  */
-public class Teacher extends Employee {
-    private int credits;
-    private int classId;
+public class Employee {
+    
+    protected int employeeId;
+    protected String name;
+    protected String address;
+    protected String phoneNo;
+    protected Double rating;
 
-    public Teacher(int employeeId, String name, String address, String phoneNo, Double rating, int credits, int classId) {
-        super(employeeId, name, address, phoneNo, rating);
-        this.credits = credits;
-        this.classId = classId;
+    public Employee(int employeeId, String name, String address, String phoneNo, Double rating) {
+        this.employeeId = employeeId;
+        this.name = name;
+        this.address = address;
+        this.phoneNo = phoneNo;
+        this.rating = rating;
     }
 
-    public int getCredits() {
-        return credits;
+    public int getEmployeeId() {
+        return employeeId;
     }
 
-    public int getClassId() {
-        return classId;
+    public String getName() {
+        return name;
     }
 
-    public void setCredits(int credits) {
-        this.credits = credits;
+    public String getAddress() {
+        return address;
     }
 
-    public void setClassId(int classId) {
-        this.classId = classId;
+    public String getPhoneNo() {
+        return phoneNo;
+    }
+
+    public Double getRating() {
+        return rating;
+    }
+
+    public void setEmployeeId(int employeeId) {
+        this.employeeId = employeeId;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setPhoneNo(String phoneNo) {
+        this.phoneNo = phoneNo;
+    }
+
+    public void setRating(Double rating) {
+        this.rating = rating;
     }
 }
