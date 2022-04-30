@@ -20,7 +20,7 @@ public class DB {
         static final String DB_URL = "jdbc:mysql://sql773.main-hosting.eu/u625234325_ood_proj";
         static final String USER = "u625234325_ood_proj";
         static final String PASS = "Northeastern@4126";
-        private Connection conn;
+        public Connection conn;
         private Statement statement;
 
         public static DB db;
@@ -60,7 +60,7 @@ public class DB {
 
         public int update(String queryStatement) {
                 try {
-                        int rs = statement.executeUpdate(queryStatement,Statement.RETURN_GENERATED_KEYS);
+                        int rs = statement.executeUpdate(queryStatement, Statement.RETURN_GENERATED_KEYS);
                         return rs;
                 } catch (Exception e) {
                         System.out.print(e.toString());

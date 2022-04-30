@@ -14,7 +14,7 @@ public class Parent {
 	private String parentName;
 	private String parentAddress;
 	private String parentPhoneNo;
-        private int student_id;
+	private int student_id;
 
 	public Parent() {
 		super();
@@ -68,18 +68,15 @@ public class Parent {
 		this.parentPhoneNo = parentPhoneNo;
 	}
 
-    public int getStudent_id() {
-        return student_id;
-    }
+	public int getStudent_id() {
+		return student_id;
+	}
 
-    public void setStudent_id(int student_id) {
-        this.student_id = student_id;
-    }
-        
-        
+	public void setStudent_id(int student_id) {
+		this.student_id = student_id;
+	}
 
 	public String generateRegisterQuery() {
-		return "INSERT INTO parent (name, address, phone,student_id) VALUES(" + this.parentName + ", " + this.parentAddress + ", "
-				+ this.parentPhoneNo+", " +this.student_id+ ");";
+		return "INSERT INTO parent (p_name, address, phone) VALUES(?,?,?)";
 	}
 }

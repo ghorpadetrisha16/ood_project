@@ -11,7 +11,7 @@ package edu.neu.csye6200.model;
 public class Student {
 
 	private int studentId;
-        private int parentId;
+	private int parentId;
 	private String studentName;
 	private int age;
 	private String dateofBirth;
@@ -88,23 +88,20 @@ public class Student {
 		this.gpa = gpa;
 	}
 
-    public int getParentId() {
-        return parentId;
-    }
+	public int getParentId() {
+		return parentId;
+	}
 
-    public void setParentId(int parentId) {
-        this.parentId = parentId;
-    }
-        
-        
+	public void setParentId(int parentId) {
+		this.parentId = parentId;
+	}
 
 	public String generateRegisterQuery() {
-		return "INSERT INTO student (name, dob, age,parent_id) VALUES(" + this.studentName + ", " + this.dateofBirth + ", "
-				+ this.age +", "+this.parentId+ ");";
+		return "INSERT INTO student (name, dob, age,parent_id) VALUES(?,?,?,?);";
 	}
-        
-        public String generateStudentIdQuery(){
-            return "SELECT student_id FROM student WHERE name="+this.studentName;
-        }
+
+	public String generateStudentIdQuery() {
+		return "SELECT student_id FROM student WHERE name=" + this.studentName;
+	}
 
 }
