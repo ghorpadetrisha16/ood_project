@@ -27,11 +27,12 @@
               <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="addStudentBtn" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <Component id="studentPanel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                      <Component id="parentPanel" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="studentPanel" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="parentPanel" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="addParentBtn" alignment="1" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="30" max="32767" attributes="0"/>
           </Group>
@@ -57,9 +58,18 @@
                       <Component id="parentPanel" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
-              <Component id="addStudentBtn" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="22" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+                      <Component id="addParentBtn" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="19" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="addStudentBtn" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -89,14 +99,20 @@
                   <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="dobLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="65" max="32767" attributes="0"/>
-                          <Component id="dobText" min="-2" pref="146" max="-2" attributes="0"/>
+                          <Component id="nameLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="104" max="32767" attributes="0"/>
+                          <Component id="nameText" min="-2" pref="146" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="nameLabel" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="dobLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="nameText" min="-2" pref="146" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="dobText" pref="146" max="32767" attributes="0"/>
+                              <Component id="parentID" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="157" max="-2" attributes="0"/>
@@ -111,12 +127,17 @@
                       <Component id="nameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="nameText" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="dobLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="dobText" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="88" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <Component id="parentID" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="62" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -141,6 +162,13 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nameTextActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Parent Id"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="parentID">
         </Component>
       </SubComponents>
     </Container>
@@ -229,6 +257,14 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JButton" name="addParentBtn">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Add Parent"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addParentBtnActionPerformed"/>
+      </Events>
+    </Component>
     <Component class="javax.swing.JButton" name="addStudentBtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="Add Student"/>

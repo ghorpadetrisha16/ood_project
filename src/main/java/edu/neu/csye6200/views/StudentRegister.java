@@ -38,6 +38,8 @@ public class StudentRegister extends javax.swing.JFrame {
         dobLabel = new javax.swing.JLabel();
         dobText = new javax.swing.JTextField();
         nameText = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        parentID = new javax.swing.JTextField();
         parentPanel = new javax.swing.JPanel();
         parentNameLabel = new javax.swing.JLabel();
         addressLabel = new javax.swing.JLabel();
@@ -45,6 +47,7 @@ public class StudentRegister extends javax.swing.JFrame {
         parentNameText = new javax.swing.JTextField();
         addressText = new javax.swing.JTextField();
         phoneText = new javax.swing.JTextField();
+        addParentBtn = new javax.swing.JButton();
         addStudentBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -70,6 +73,8 @@ public class StudentRegister extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("Parent Id");
+
         javax.swing.GroupLayout studentPanelLayout = new javax.swing.GroupLayout(studentPanel);
         studentPanel.setLayout(studentPanelLayout);
         studentPanelLayout.setHorizontalGroup(
@@ -78,13 +83,17 @@ public class StudentRegister extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addGroup(studentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(studentPanelLayout.createSequentialGroup()
-                        .addComponent(dobLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
-                        .addComponent(dobText, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, studentPanelLayout.createSequentialGroup()
                         .addComponent(nameLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
+                        .addComponent(nameText, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, studentPanelLayout.createSequentialGroup()
+                        .addGroup(studentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(dobLabel)
+                            .addComponent(jLabel1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(nameText, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(studentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(dobText, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+                            .addComponent(parentID))))
                 .addGap(157, 157, 157))
         );
         studentPanelLayout.setVerticalGroup(
@@ -94,11 +103,15 @@ public class StudentRegister extends javax.swing.JFrame {
                 .addGroup(studentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nameLabel)
                     .addComponent(nameText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(68, 68, 68)
+                .addGap(34, 34, 34)
                 .addGroup(studentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(dobLabel)
                     .addComponent(dobText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(88, Short.MAX_VALUE))
+                .addGap(40, 40, 40)
+                .addGroup(studentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(parentID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
 
         parentPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Parent Details"));
@@ -162,6 +175,13 @@ public class StudentRegister extends javax.swing.JFrame {
                 .addContainerGap(58, Short.MAX_VALUE))
         );
 
+        addParentBtn.setText("Add Parent");
+        addParentBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addParentBtnActionPerformed(evt);
+            }
+        });
+
         addStudentBtn.setText("Add Student");
         addStudentBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -177,10 +197,11 @@ public class StudentRegister extends javax.swing.JFrame {
                 .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(addStudentBtn)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(studentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31)
-                        .addComponent(parentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(studentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(parentPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addParentBtn, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap(30, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -199,16 +220,22 @@ public class StudentRegister extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(parentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(52, 52, 52)
-                .addComponent(addStudentBtn)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(52, 52, 52)
+                        .addComponent(addParentBtn)
+                        .addContainerGap(19, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(addStudentBtn)
+                        .addGap(32, 32, 32))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void addStudentBtnActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_addStudentBtnActionPerformed
-       StudentController std = new StudentController();
+    private void addStudentBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStudentBtnActionPerformed
+        StudentController std = new StudentController();
        parentName = parentNameText.getText();
        dob =dobText.getText();
        studentName = nameText.getText();
@@ -221,7 +248,23 @@ public class StudentRegister extends javax.swing.JFrame {
        addressText.setText("");
        phoneText.setText("");
        parentNameText.setText("");
-    }// GEN-LAST:event_addStudentBtnActionPerformed
+    }//GEN-LAST:event_addStudentBtnActionPerformed
+
+     private void addParentBtnActionPerformed(java.awt.event.ActionEvent evt) {                                              
+        StudentController std = new StudentController();
+       parentName = parentNameText.getText();
+       dob =dobText.getText();
+       studentName = nameText.getText();
+       parentAddress = addressText.getText();
+       parentPhone = phoneText.getText();
+       
+       std.addStudentAndParent(studentName,  dob, parentName, parentPhone, parentAddress);
+       
+       nameText.setText("");
+       addressText.setText("");
+       phoneText.setText("");
+       parentNameText.setText("");
+    }   
 
     private void dobTextActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_dobTextActionPerformed   
     dob =dobText.getText();
@@ -259,14 +302,17 @@ public class StudentRegister extends javax.swing.JFrame {
     private String parentPhone;
     private String parentAddress;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addParentBtn;
     private javax.swing.JButton addStudentBtn;
     private javax.swing.JLabel addressLabel;
     private javax.swing.JTextField addressText;
     private javax.swing.JLabel dobLabel;
     private javax.swing.JTextField dobText;
     private javax.swing.JLabel heading;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel nameLabel;
     private javax.swing.JTextField nameText;
+    private javax.swing.JTextField parentID;
     private javax.swing.JLabel parentNameLabel;
     private javax.swing.JTextField parentNameText;
     private javax.swing.JPanel parentPanel;

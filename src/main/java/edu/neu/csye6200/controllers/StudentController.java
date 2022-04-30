@@ -29,20 +29,20 @@ public class StudentController {
             String parentAddress) {
 
         DB db = DB.getObj();
-       
+
         LocalDate dobFromString = LocalDate.parse(dob);
-        
+
         int age = getAgeFromDOB(dobFromString);
         // create student obj
         Student s = new Student(name, dobFromString.toString(), age);
         Parent p = new Parent(parentName, parentAddress, parentPhone);
-        
-        db.update(p.generateRegisterQuery());
+
+        db.query(p.generateRegisterQuery());
         int parentId = db.getGeneratedKey();
 
         s.setParentId(parentId);
-        
-        db.update(s.generateRegisterQuery());
+
+        db.query(s.generateRegisterQuery());
 
     }
 
