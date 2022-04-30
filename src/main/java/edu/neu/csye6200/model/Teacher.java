@@ -8,29 +8,39 @@ package edu.neu.csye6200.model;
  *
  * @author Tarun
  */
-public class Employee {
+public class Teacher {
+
+    
     
     protected int employeeId;
-    protected String name;
+    protected String fname;
+    protected String lname;
     protected String address;
     protected String phoneNo;
     protected Double rating;
 
-    public Employee(int employeeId, String name, String address, String phoneNo, Double rating) {
-        this.employeeId = employeeId;
-        this.name = name;
-        this.address = address;
-        this.phoneNo = phoneNo;
-        this.rating = rating;
+    public Teacher(){}
+    
+    public String getFname() {
+        return fname;
+    }
+
+    public void setFname(String fname) {
+        this.fname = fname;
+    }
+
+    public String getLname() {
+        return lname;
+    }
+
+    public void setLname(String lname) {
+        this.lname = lname;
     }
 
     public int getEmployeeId() {
         return employeeId;
     }
 
-    public String getName() {
-        return name;
-    }
 
     public String getAddress() {
         return address;
@@ -48,9 +58,6 @@ public class Employee {
         this.employeeId = employeeId;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public void setAddress(String address) {
         this.address = address;
