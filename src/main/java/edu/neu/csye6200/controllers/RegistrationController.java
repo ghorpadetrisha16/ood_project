@@ -34,6 +34,31 @@ public class RegistrationController {
             e.printStackTrace();
         }
     }
+    
+    public void updateStudent(int student_id) {
+        try {
+
+            DB db = DB.getObj();
+
+            LocalDate currentDate = LocalDate.now();
+            LocalDate renewalDate = currentDate.plusYears(1);
+            int yearsMember = 1;
+            Registration reg = new Registration(student_id,renewalDate, yearsMember);
+
+            PreparedStatement statement = db.conn.prepareStatement(reg.generateRegisterQuery());
+            statement.setInt(1, reg.getStudent_id());
+            statement.setDate(2, reg.getRenewalDate());
+            statement.setInt(3, reg.getYearsMember());
+
+            int affectedRows = statement.executeUpdate();
+            if (affectedRows == 0) {
+                throw new Exception("Creating user failed, no rows affected.");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     public static RegistrationController getObj() {
         if (regController == null) {
