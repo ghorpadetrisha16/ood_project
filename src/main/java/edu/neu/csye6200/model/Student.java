@@ -121,6 +121,7 @@ public class Student {
                          " name = " +"'"+this.studentName+"'"+
                         ", dob = " +"'"+ this.dateofBirth +"'"+
                         ", gpa= " +"'"+ this.gpa +  "'"+
+                        ", age= " +"'"+ this.age +  "'"+
                         " WHERE student_id =" +"'"+ this.studentId + "'"+";";
         }
         

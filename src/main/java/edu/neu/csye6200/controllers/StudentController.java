@@ -29,6 +29,11 @@ public class StudentController {
         return Period.between(dob, new Date(System.currentTimeMillis()).toLocalDate()).getYears();
     }
 
+    private int getAgeFromDOB2(Date dob) {
+        return Period.between(dob.toLocalDate(), new Date(System.currentTimeMillis()).toLocalDate()).getMonths();
+    }
+
+
     public void addStudentAndParent(String name, String dob, String parentName, String parentPhone,
             String parentAddress) {
         try {
@@ -65,13 +70,26 @@ public class StudentController {
 
             s.setParentId(parentId);
 
-            statement = db.conn.prepareStatement(s.generateRegisterQuery());
+            statement = db.conn.prepareStatement(s.generateRegisterQuery(), Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, s.getStudentName());
             statement.setString(2, s.getDateofBirth());
             statement.setInt(3, s.getAge());
             statement.setInt(4, s.getParentId());
 
-            statement.executeUpdate();
+            affectedRows = statement.executeUpdate();
+            if (affectedRows == 0) {
+                throw new Exception("Creating user failed, no rows affected.");
+            }
+
+            int student_id = -1;
+            try (ResultSet rs = statement.getGeneratedKeys()) {
+                if (rs.next()) {
+                    student_id = rs.getInt(1);
+                }
+                rs.close();
+            }
+
+            RegistrationController.getObj().addStudent(student_id);
 
             // db.query(s.generateRegisterQuery());
         } catch (Exception e) {
@@ -88,16 +106,17 @@ public class StudentController {
     }
 
     public void updateStudentAndParent(int studentId, String studentName, String dateofBirth, double gpa,
-            int parentId, String parentName, String parentAddress, String parentPhoneNo) throws InterruptedException{
+            int parentId, String parentName, String parentAddress, String parentPhoneNo) throws InterruptedException {
 
         DB db = DB.getObj();
 
-        Student s = new Student(studentId, studentName, dateofBirth, gpa);
+
+
+        Date dob = Date.valueOf(dateofBirth);
+
+        int age = getAgeFromDOB2(dob);
+        Student s = new Student(studentId, studentName, dob.toString(), gpa);
         Parent p = new Parent(parentId,parentName, parentAddress, parentPhoneNo);
-
-        LocalDate dob = LocalDate.parse(dateofBirth);
-
-        int age = getAgeFromDOB(dob);
 
         s.setAge(age);
 
@@ -110,23 +129,22 @@ public class StudentController {
     }
 
     public void showStudentAndParentTable(int studentId, String studentName, String dateofBirth, double gpa,
-            int parentId, String parentName, String parentAddress, String parentPhoneNo){
+            int parentId, String parentName, String parentAddress, String parentPhoneNo) {
 
         DB db = DB.getObj();
 
-        Student s = new Student(studentId, studentName, dateofBirth, gpa);
+        Date dob = Date.valueOf(dateofBirth);
+
+        int age = getAgeFromDOB2(dob);
+        Student s = new Student(studentId, studentName, dob.toString(), gpa);
         Parent p = new Parent(parentId,parentName, parentAddress, parentPhoneNo);
-
-        LocalDate dob = LocalDate.parse(dateofBirth);
-
-        int age = getAgeFromDOB(dob);
 
         s.setAge(age);
 
         db.query(s.showStudentTable());
 
-//        PreparedStatement insert =
-//        ResultSetMetaData rss =
+        // PreparedStatement insert =
+        // ResultSetMetaData rss =
 
 
     }

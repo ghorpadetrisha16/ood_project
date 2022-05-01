@@ -66,9 +66,6 @@ StudentUpdateDelete extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
@@ -392,7 +389,7 @@ StudentUpdateDelete extends javax.swing.JFrame {
         DefaultTableModel df = (DefaultTableModel) jTable1.getModel();
         df.setRowCount(0);
         ResultSet rs = db.query("SELECT s.student_id,s.name,s.age,s.dob,s.gpa,s.parent_id,p.p_name,p.address,p.phone "
-                    + " FROM student s,parent p;");
+                    + " FROM student s,parent p WHERE s.parent_id=p.parent_id order by s.student_id ;");
         ResultSetMetaData rss = rs.getMetaData();
         int c = rss.getColumnCount();
         while(rs.next()){
