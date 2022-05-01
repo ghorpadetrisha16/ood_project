@@ -28,6 +28,11 @@ public class StudentController {
     private int getAgeFromDOB(LocalDate dob) {
         return Period.between(dob, new Date(System.currentTimeMillis()).toLocalDate()).getYears();
     }
+    
+    private int getAgeFromDOB2(Date dob) {
+        return Period.between(dob.toLocalDate(), new Date(System.currentTimeMillis()).toLocalDate()).getYears();
+    }
+    
 
     public void addStudentAndParent(String name, String dob, String parentName, String parentPhone,
             String parentAddress) {
@@ -92,12 +97,13 @@ public class StudentController {
 
         DB db = DB.getObj();
 
-        Student s = new Student(studentId, studentName, dateofBirth, gpa);
+        
+
+        Date dob = Date.valueOf(dateofBirth);
+
+        int age = getAgeFromDOB2(dob);
+        Student s = new Student(studentId, studentName, dob.toString(), gpa);
         Parent p = new Parent(parentId,parentName, parentAddress, parentPhoneNo);
-
-        LocalDate dob = LocalDate.parse(dateofBirth);
-
-        int age = getAgeFromDOB(dob);
 
         s.setAge(age);
 
@@ -114,12 +120,11 @@ public class StudentController {
 
         DB db = DB.getObj();
 
-        Student s = new Student(studentId, studentName, dateofBirth, gpa);
+        Date dob = Date.valueOf(dateofBirth);
+
+        int age = getAgeFromDOB2(dob);
+        Student s = new Student(studentId, studentName, dob.toString(), gpa);
         Parent p = new Parent(parentId,parentName, parentAddress, parentPhoneNo);
-
-        LocalDate dob = LocalDate.parse(dateofBirth);
-
-        int age = getAgeFromDOB(dob);
 
         s.setAge(age);
 
