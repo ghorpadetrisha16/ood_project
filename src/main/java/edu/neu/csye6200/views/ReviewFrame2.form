@@ -73,9 +73,12 @@
                               </Group>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="tRating" pref="87" max="32767" attributes="0"/>
-                              <Component id="yearRating" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="tRating" pref="87" max="32767" attributes="0"/>
+                                  <Component id="yearRating" max="32767" attributes="0"/>
+                              </Group>
+                              <Component id="revBack" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -111,7 +114,10 @@
                   <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                   <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="41" max="32767" attributes="0"/>
-                  <Component id="reviewAlert" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="reviewAlert" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="revBack" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -159,6 +165,14 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Employee Review"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="revBack">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Back"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="revBackActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

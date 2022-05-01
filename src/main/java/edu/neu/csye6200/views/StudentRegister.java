@@ -48,6 +48,7 @@ public class StudentRegister extends javax.swing.JFrame {
         addressText = new javax.swing.JTextField();
         phoneText = new javax.swing.JTextField();
         addStudentBtn = new javax.swing.JButton();
+        sregBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -181,6 +182,13 @@ public class StudentRegister extends javax.swing.JFrame {
             }
         });
 
+        sregBack.setText("Back");
+        sregBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sregBackActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -192,7 +200,10 @@ public class StudentRegister extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(addStudentBtn)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(sregBack)
+                        .addGap(116, 116, 116)
+                        .addComponent(addStudentBtn))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(studentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(31, 31, 31)
@@ -212,7 +223,9 @@ public class StudentRegister extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(parentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(33, 33, 33)
-                .addComponent(addStudentBtn)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addStudentBtn)
+                    .addComponent(sregBack))
                 .addGap(38, 38, 38))
         );
 
@@ -235,6 +248,14 @@ public class StudentRegister extends javax.swing.JFrame {
        parentNameText.setText("");
        dobText.setText("");
     }//GEN-LAST:event_addStudentBtnActionPerformed
+
+    private void sregBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sregBackActionPerformed
+       
+        this.toBack();
+        MainFrame mf2 = new MainFrame();
+        mf2.setVisible(true);
+        mf2.toFront();
+    }//GEN-LAST:event_sregBackActionPerformed
 
      private void addParentBtnActionPerformed(java.awt.event.ActionEvent evt) {                                              
         StudentController std = new StudentController();
@@ -303,6 +324,7 @@ public class StudentRegister extends javax.swing.JFrame {
     private javax.swing.JPanel parentPanel;
     private javax.swing.JLabel phoneLabel;
     private javax.swing.JTextField phoneText;
+    private javax.swing.JButton sregBack;
     private javax.swing.JPanel studentPanel;
     // End of variables declaration//GEN-END:variables
 }

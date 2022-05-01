@@ -50,6 +50,7 @@ public class ReviewFrame2 extends javax.swing.JFrame {
         yearRating = new javax.swing.JTextField();
         reviewAlert = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        revBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -74,6 +75,13 @@ public class ReviewFrame2 extends javax.swing.JFrame {
         });
 
         jLabel4.setText("Employee Review");
+
+        revBack.setText("Back");
+        revBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                revBackActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -100,9 +108,11 @@ public class ReviewFrame2 extends javax.swing.JFrame {
                                     .addComponent(reviewAlert)
                                     .addComponent(jLabel3))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tRating, javax.swing.GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)
-                            .addComponent(yearRating))))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(tRating, javax.swing.GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)
+                                .addComponent(yearRating))
+                            .addComponent(revBack, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addGap(107, 107, 107))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
@@ -129,7 +139,9 @@ public class ReviewFrame2 extends javax.swing.JFrame {
                 .addGap(14, 14, 14)
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                .addComponent(reviewAlert)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(reviewAlert)
+                    .addComponent(revBack))
                 .addContainerGap())
         );
 
@@ -209,6 +221,13 @@ public class ReviewFrame2 extends javax.swing.JFrame {
        
     }//GEN-LAST:event_reviewAlertActionPerformed
 
+    private void revBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_revBackActionPerformed
+        this.toBack();
+        MainFrame mf = new MainFrame();
+        mf.setVisible(true);
+        mf.toFront();
+    }//GEN-LAST:event_revBackActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -251,6 +270,7 @@ public class ReviewFrame2 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton revBack;
     private javax.swing.JButton reviewAlert;
     private javax.swing.JTextField tId;
     private javax.swing.JTextField tRating;
