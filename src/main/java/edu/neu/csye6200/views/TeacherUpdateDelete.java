@@ -4,7 +4,7 @@
  */
 package edu.neu.csye6200.views;
 
-import edu.neu.csye6200.controllers.teacherController;
+import edu.neu.csye6200.controllers.TeacherController;
 import edu.neu.csye6200.model.Teacher;
 
 /**
@@ -256,14 +256,14 @@ public class TeacherUpdateDelete extends javax.swing.JFrame {
             teacher.setEmployeeId(0);
         }
         
-        teacherController teachercontroller = new teacherController();
+        TeacherController teachercontroller = new TeacherController();
         System.out.println(teacher.toString());
         teachercontroller.delete(teacher);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         //view all
-                teacherController teachercontroller = new teacherController();
+                TeacherController teachercontroller = new TeacherController();
         teachercontroller.viewTeachers();
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -319,7 +319,7 @@ public class TeacherUpdateDelete extends javax.swing.JFrame {
         } else {
             teacher.setAddress("");
         }
-        teacherController teachercontroller = new teacherController();
+        TeacherController teachercontroller = new TeacherController();
         System.out.println(teacher.toString());
         teachercontroller.update(teacher);
 

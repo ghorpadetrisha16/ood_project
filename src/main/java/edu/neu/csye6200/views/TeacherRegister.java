@@ -4,7 +4,7 @@
  */
 package edu.neu.csye6200.views;
 
-import edu.neu.csye6200.controllers.teacherController;
+import edu.neu.csye6200.controllers.TeacherController;
 import edu.neu.csye6200.model.Teacher;
 import java.awt.Color;
 
@@ -231,7 +231,7 @@ public class TeacherRegister extends javax.swing.JFrame {
             teacher.setPhoneNo(jTextField3.getText());
             teacher.setPhoneNo(jTextField3.getText());
             teacher.setAddress(jTextArea1.getText());
-            teacherController teachercontroller = new teacherController();
+            TeacherController teachercontroller = new TeacherController();
             teachercontroller.register(teacher);
             
         
@@ -256,7 +256,7 @@ public class TeacherRegister extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {                                         
 
-        teacherController teachercontroller = new teacherController();
+        TeacherController teachercontroller = new TeacherController();
         teachercontroller.viewTeachers();
 
         // TODO add your handling code here:

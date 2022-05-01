@@ -18,14 +18,14 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author eswar
  */
-public class teacherController {
+public class TeacherController {
 
     final String DB_URL = "jdbc:mysql://sql773.main-hosting.eu/u625234325_ood_proj";
     final String USER = "u625234325_ood_proj";
     final String PASS = "Northeastern@4126";
     private Boolean teacherFlag=false;
 
-    public teacherController() {
+    public TeacherController() {
     }
     
     public Boolean getTeacherFlag() {
