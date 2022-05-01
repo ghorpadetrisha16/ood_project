@@ -199,6 +199,7 @@ public class ImmunizationRecord extends javax.swing.JFrame {
         MainFrame mf = new MainFrame();
         mf.setVisible(true);
         mf.toFront();
+        this.setVisible(false);
     }//GEN-LAST:event_irBackActionPerformed
 
     

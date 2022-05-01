@@ -260,7 +260,18 @@ public class TeacherRegister extends javax.swing.JFrame {
         teachercontroller.viewTeachers();
 
         // TODO add your handling code here:
-    }                                        
+    }        
+    
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {                                         
+this.toBack();
+        MainFrame mf = new MainFrame();
+        mf.setVisible(true);
+        mf.toFront();
+        this.setVisible(false);
+       
+
+        // TODO add your handling code here:
+    }          
 
     /**
      * @param args the command line arguments
@@ -297,7 +308,8 @@ public class TeacherRegister extends javax.swing.JFrame {
         });
     }
 
-    // Variables declaration - do not modify                     
+    // Variables declaration - do not modify  
+    private javax.swing.JButton backButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;

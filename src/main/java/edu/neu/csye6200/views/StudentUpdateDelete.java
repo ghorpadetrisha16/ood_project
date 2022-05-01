@@ -266,9 +266,11 @@ StudentUpdateDelete extends javax.swing.JFrame {
 
     private void BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackActionPerformed
        this.toBack();
+       
         MainFrame mf = new MainFrame();
         mf.setVisible(true);
         mf.toFront();
+        this.setVisible(false);
     }//GEN-LAST:event_BackActionPerformed
 
     private void parentPhoneNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_parentPhoneNumActionPerformed

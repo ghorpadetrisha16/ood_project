@@ -254,7 +254,7 @@ StudentUpdateDelete sud;
     }//GEN-LAST:event_sUpdateandViewActionPerformed
 
     private void tInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tInsertActionPerformed
-        TeacherRegister tr2 = new TeacherRegister();
+        TeacherR tr2 = new TeacherR();
                 tr2.setVisible(true);
     }//GEN-LAST:event_tInsertActionPerformed
 
