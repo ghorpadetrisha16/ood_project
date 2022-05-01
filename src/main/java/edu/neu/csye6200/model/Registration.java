@@ -1,18 +1,19 @@
 package edu.neu.csye6200.model;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.sql.Date;
 
 public class Registration {
     private int student_id;
-    private Date registeredDate;
-    private Date renewalDate;
+    private LocalDate registeredDate;
+    private LocalDate renewalDate;
     private int yearsMember;
 
     Registration() {
         super();
     }
 
-    public Registration(int student_id, Date registeredDate, Date renewalDate, int yearsMember) {
+    public Registration(int student_id, LocalDate registeredDate, LocalDate renewalDate, int yearsMember) {
         this.student_id = student_id;
         this.registeredDate = registeredDate;
         this.renewalDate = renewalDate;
@@ -28,18 +29,18 @@ public class Registration {
     }
 
     public Date getRegisteredDate() {
-        return registeredDate;
+        return Date.valueOf(registeredDate);
     }
 
-    public void setRegisteredDate(Date registeredDate) {
+    public void setRegisteredDate(LocalDate registeredDate) {
         this.registeredDate = registeredDate;
     }
 
     public Date getRenewalDate() {
-        return renewalDate;
+        return Date.valueOf(renewalDate);
     }
 
-    public void setRenewalDate(Date renewalDate) {
+    public void setRenewalDate(LocalDate renewalDate) {
         this.renewalDate = renewalDate;
     }
 
@@ -49,6 +50,10 @@ public class Registration {
 
     public void setYearsMember(int yearsMember) {
         this.yearsMember = yearsMember;
+    }
+
+    public String generateRegisterQuery() {
+        return "INSERT INTO registration (student_id,created_date,renewal_date,years_member) VALUES(?,?,?,?);";
     }
 
 }
