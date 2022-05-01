@@ -18,11 +18,20 @@ Compile and Build the Project
 
 
 
+
 Team Members:
+
 Kriya Kothari (NUID:002923272)
+
 Vyshnavu P (NUID:002919813)
+
 Akanksha Pawar (NUID: 002928432)
+
 Akshay KM (NUID:002928833)
+
 SaiTarun Movva (NUID:002922800)
+
 Eswar Saladi (NUID:)
+
 Vraj Himanshu Reshamdalal (NUID: 002927484)
+
