@@ -4,10 +4,16 @@
  */
 package edu.neu.csye6200.views;
 
+import edu.neu.csye6200.DB;
+import edu.neu.csye6200.model.Rating;
 import java.sql.Connection;
+
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -40,10 +46,14 @@ public class ReviewFrame2 extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         tRating = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        yearRating = new javax.swing.JTextField();
+        reviewAlert = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Enter Teacher Id:");
+        jLabel1.setText("Enter Employee Id:");
 
         jLabel2.setText("Teacher rating (out of 5):");
 
@@ -54,42 +64,73 @@ public class ReviewFrame2 extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setText("year (as YYYY):");
+
+        reviewAlert.setText("Review Alert");
+        reviewAlert.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reviewAlertActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Employee Review");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(jLabel1)
-                        .addGap(27, 27, 27)
-                        .addComponent(tId, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(tRating, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(126, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addGap(28, 28, 28)
+                        .addComponent(tId, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 148, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel2))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(37, 37, 37)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(reviewAlert)
+                                    .addComponent(jLabel3))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tRating, javax.swing.GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)
+                            .addComponent(yearRating))))
                 .addGap(107, 107, 107))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addContainerGap()
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(tId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addComponent(tRating, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(yearRating, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(14, 14, 14)
                 .addComponent(jButton1)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addComponent(reviewAlert)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -104,9 +145,9 @@ public class ReviewFrame2 extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(39, Short.MAX_VALUE)
+                .addContainerGap(15, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52))
+                .addContainerGap())
         );
 
         pack();
@@ -114,32 +155,59 @@ public class ReviewFrame2 extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // Save info into DB
+        try {
         String teacherID = tId.getText();
         String teacherRating = tRating.getText();
-        Connection con1;
-        PreparedStatement insertStmt;
+        String year = yearRating.getText();
         
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            con1 = DriverManager.getConnection("jdbc:mysql://localhost/DB_Name","root","");
-            insertStmt = con1.prepareStatement("insert into table_name(col1,col2,col3,...)values(?,?,?,...) where tacher_id=?");
-            insertStmt.setString(1, teacherID);
-//            insertStmt.setString(1, teacherID);
-
-            insertStmt.executeUpdate();
-            JOptionPane.showMessageDialog(this, "Record Added");
+        Rating r = new Rating(Integer.valueOf(teacherID), Integer.valueOf(year), Integer.valueOf(teacherRating));
+      
+        DB db = DB.getObj();
+        
+            PreparedStatement statement = db.conn.prepareStatement("INSERT INTO rating (employee_id,rating,year) VALUES(?,?,?);");
+            statement.setString(1, String.valueOf(r.getEmpID()));
+            statement.setString(2, String.valueOf(r.getRating()));
+            statement.setString(3, String.valueOf(r.getYear()));
+           statement.executeUpdate();
             
-            tId.setText("");
-            tRating.setText("");
-            tId.requestFocus();
-
             
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ReviewFrame2.class.getName()).log(Level.SEVERE, null, ex);
+             JOptionPane.showMessageDialog(this, "Record Added");
+             tId.setText(String.valueOf(r.getEmpID()));
+            tRating.setText(String.valueOf(r.getRating()));
+            yearRating.setText(String.valueOf(r.getYear()));
+
         } catch (SQLException ex) {
             Logger.getLogger(ReviewFrame2.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void reviewAlertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reviewAlertActionPerformed
+        // TODO add your handling code here:
+        try { 
+        DB db = DB.getObj();
+         Date d=new Date();  
+        String year=String.valueOf(d.getYear()); 
+        
+        ResultSet rs = db.query("SELECT employee_id FROM rating WHERE year !="+year+";");
+        ResultSetMetaData rsMetaData = rs.getMetaData();
+        int columnCount = rsMetaData.getColumnCount();
+        String str="";
+            while(rs.next()){
+                str = str +  String.valueOf(rs.getObject(1));
+             for (int i = 2; i <= columnCount; i++) {
+        str = str + ","+ String.valueOf(rs.getObject(i));
+    }
+            }
+            ReviewFrame2 r2 = new ReviewFrame2();
+             
+             JOptionPane.showMessageDialog(r2, "The teachers not reviewed yet are: "+str);
+        } catch (SQLException ex) {
+            Logger.getLogger(ReviewFrame2.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+           
+       
+    }//GEN-LAST:event_reviewAlertActionPerformed
 
     /**
      * @param args the command line arguments
@@ -180,8 +248,12 @@ public class ReviewFrame2 extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton reviewAlert;
     private javax.swing.JTextField tId;
     private javax.swing.JTextField tRating;
+    private javax.swing.JTextField yearRating;
     // End of variables declaration//GEN-END:variables
 }
