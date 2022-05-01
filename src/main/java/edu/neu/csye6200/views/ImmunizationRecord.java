@@ -76,6 +76,7 @@ public class ImmunizationRecord extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         studentIdinView = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        irBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Immunization Record");
@@ -125,6 +126,13 @@ public class ImmunizationRecord extends javax.swing.JFrame {
             }
         });
 
+        irBack.setText("Back");
+        irBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                irBackActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -142,7 +150,9 @@ public class ImmunizationRecord extends javax.swing.JFrame {
                         .addGap(354, 354, 354))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jButton1)
-                        .addGap(384, 384, 384))
+                        .addGap(84, 84, 84)
+                        .addComponent(irBack)
+                        .addGap(222, 222, 222))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(159, 159, 159))))
@@ -157,7 +167,9 @@ public class ImmunizationRecord extends javax.swing.JFrame {
                     .addComponent(jLabel9)
                     .addComponent(studentIdinView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(irBack))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(75, Short.MAX_VALUE))
@@ -181,6 +193,13 @@ public class ImmunizationRecord extends javax.swing.JFrame {
        
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void irBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_irBackActionPerformed
+         this.toBack();
+        MainFrame mf = new MainFrame();
+        mf.setVisible(true);
+        mf.toFront();
+    }//GEN-LAST:event_irBackActionPerformed
 
     
      String birthdate;
@@ -330,6 +349,7 @@ public class ImmunizationRecord extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton irBack;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel9;

@@ -66,6 +66,11 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         sImmunizatoin.setText("Immunization");
+        sImmunizatoin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sImmunizatoinActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -272,6 +277,17 @@ StudentUpdateDelete sud;
 TeacherUpdateDelete tud = new TeacherUpdateDelete();
 tud.setVisible(true);
     }//GEN-LAST:event_tUpdateActionPerformed
+
+    private void sImmunizatoinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sImmunizatoinActionPerformed
+        ImmunizationRecord ir;
+        try {
+            ir = new ImmunizationRecord();
+            ir.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_sImmunizatoinActionPerformed
 
     /**
      * @param args the command line arguments
