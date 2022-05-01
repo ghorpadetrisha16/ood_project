@@ -30,7 +30,7 @@ public class StudentController {
     }
     
     private int getAgeFromDOB2(Date dob) {
-        return Period.between(dob.toLocalDate(), new Date(System.currentTimeMillis()).toLocalDate()).getYears();
+        return Period.between(dob.toLocalDate(), new Date(System.currentTimeMillis()).toLocalDate()).getMonths();
     }
     
 
