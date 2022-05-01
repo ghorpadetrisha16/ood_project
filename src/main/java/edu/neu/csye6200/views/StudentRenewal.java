@@ -6,12 +6,18 @@ package edu.neu.csye6200.views;
 
 import edu.neu.csye6200.DB;
 import edu.neu.csye6200.controllers.RegistrationController;
+import java.awt.Color;
+import java.awt.Component;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -160,6 +166,7 @@ public class StudentRenewal extends javax.swing.JFrame {
         reg.updateStudent(studentId);
         try {
             tableShow2();
+            changeTable(jTable1,3);
         } catch (SQLException ex) {
             Logger.getLogger(StudentRenewal.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -202,6 +209,8 @@ public class StudentRenewal extends javax.swing.JFrame {
             }
             df.addRow(v);
         }
+        
+        changeTable(jTable1,3);
     }
 
     /**
@@ -251,6 +260,23 @@ public class StudentRenewal extends javax.swing.JFrame {
         });
     }
 
+    
+    public void changeTable(JTable table, int column_index) {
+        table.getColumnModel().getColumn(column_index).setCellRenderer(new DefaultTableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                final Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+                Date renewalDate = Date.valueOf(table.getValueAt(row,3).toString());
+                Date currentDate = Date.valueOf(LocalDate.now());
+                if (renewalDate.compareTo(currentDate)<0) {
+                    c.setBackground(Color.RED);
+                } else {
+                    c.setBackground(Color.GREEN);
+                }
+                return c;
+            }
+        });
+    }
     int studentId;
     String studentName;
 
