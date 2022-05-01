@@ -8,13 +8,18 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-        <exec.mainClass>edu.neu.csye6200.Driver</exec.mainClass>
+        <exec.mainClass>edu.neu.csye6200.views.MainFrame</exec.mainClass>
     </properties>
     <dependencies>
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.28</version>
+        </dependency>
+        <dependency>             
+            <groupId>org.swinglabs</groupId>             
+            <artifactId>swingx</artifactId>             
+            <version>1.6.1</version>         
         </dependency>
     </dependencies>
 </project>
