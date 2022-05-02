@@ -14,6 +14,7 @@ import java.util.Currency;
 import edu.neu.csye6200.DB;
 import edu.neu.csye6200.model.Parent;
 import edu.neu.csye6200.model.Student;
+import edu.neu.csye6200.model.Teacher;
 import java.sql.PreparedStatement;
 import java.time.LocalDate;
 
@@ -40,9 +41,9 @@ public class StudentController {
 
             DB db = DB.getObj();
 
-            LocalDate dobFromString = LocalDate.parse(dob);
+            Date dobFromString = Date.valueOf(dob);
 
-            int age = getAgeFromDOB(dobFromString);
+            int age = getAgeFromDOB2(dobFromString);
             // create student obj
             Student s = new Student(name, dobFromString.toString(), age);
             Parent p = new Parent(parentName, parentAddress, parentPhone);
@@ -147,6 +148,15 @@ public class StudentController {
         // ResultSetMetaData rss =
 
 
+    }
+    
+    public void UpdateStudentClass(int studentId, int classId){
+        DB db = DB.getObj();
+        Student s = new Student(studentId,classId);
+//        Teacher t = new Teacher(teacherName,classId);
+        db.update(s.updateStudentClass());
+//        db.update(t.updateStudentTeacher());
+        
     }
 
 

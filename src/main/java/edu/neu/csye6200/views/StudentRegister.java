@@ -252,9 +252,12 @@ public class StudentRegister extends javax.swing.JFrame {
     private void sregBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sregBackActionPerformed
        
         this.toBack();
+        
+        
         MainFrame mf2 = new MainFrame();
         mf2.setVisible(true);
         mf2.toFront();
+        this.setVisible(false);
     }//GEN-LAST:event_sregBackActionPerformed
 
      private void addParentBtnActionPerformed(java.awt.event.ActionEvent evt) {                                              

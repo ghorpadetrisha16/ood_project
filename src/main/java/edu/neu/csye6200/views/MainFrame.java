@@ -35,6 +35,7 @@ public class MainFrame extends javax.swing.JFrame {
         sInsert = new javax.swing.JButton();
         sUpdateandView = new javax.swing.JButton();
         sImmunizatoin = new javax.swing.JButton();
+        Assign = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         tInsert = new javax.swing.JButton();
@@ -72,6 +73,13 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        Assign.setText("Assign");
+        Assign.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AssignActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -85,8 +93,10 @@ public class MainFrame extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(sUpdateandView)
                         .addGap(18, 18, 18)
-                        .addComponent(sImmunizatoin)))
-                .addContainerGap(275, Short.MAX_VALUE))
+                        .addComponent(sImmunizatoin)
+                        .addGap(27, 27, 27)
+                        .addComponent(Assign)))
+                .addContainerGap(176, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,7 +107,8 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(sInsert)
                     .addComponent(sUpdateandView)
-                    .addComponent(sImmunizatoin))
+                    .addComponent(sImmunizatoin)
+                    .addComponent(Assign))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
 
@@ -289,6 +300,18 @@ tud.setVisible(true);
         
     }//GEN-LAST:event_sImmunizatoinActionPerformed
 
+    private void AssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AssignActionPerformed
+        // TODO add your handling code here:
+        StudentAssigning sa;
+        try {
+            sa = new StudentAssigning();
+            sa.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_AssignActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -325,6 +348,7 @@ tud.setVisible(true);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Assign;
     private javax.swing.JButton eReview;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

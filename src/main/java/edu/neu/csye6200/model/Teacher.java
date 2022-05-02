@@ -18,8 +18,15 @@ public class Teacher {
     protected String address;
     protected String phoneNo;
     protected Double rating;
+    protected int classId;
 
     public Teacher(){}
+    
+    public Teacher(String fname,int classId){
+        super();
+        this.fname=fname;
+        this.classId=classId; 
+    }
     
     public String getFname() {
         return fname;
@@ -70,4 +77,11 @@ public class Teacher {
     public void setRating(Double rating) {
         this.rating = rating;
     }
+    
+    public String updateStudentTeacher(){
+            return "UPDATE teacher SET " +
+                         " class_id = " +"'"+this.classId+"'"+
+                        " WHERE class_id =" +"'"+ this.classId + "'"+";";
+        }
+    
 }

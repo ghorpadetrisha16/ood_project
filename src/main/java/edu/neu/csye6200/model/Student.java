@@ -16,6 +16,9 @@ public class Student {
 	private int age;
 	private String dateofBirth;
 	private double gpa;
+        private int classId;
+        
+        
 
 	{
 		studentId = -1;
@@ -51,6 +54,11 @@ public class Student {
 		this.gpa = gpa;
 	}
         
+        public Student(int studentId, int classId){
+            super();
+		this.studentId = studentId;
+                this.classId=classId;
+        }
         
         
         
@@ -129,5 +137,12 @@ public class Student {
             return "SELECT s.student_id,s.name,s.age,s.dob,s.gpa,s.parent_id,p.name,p.address,p.phone "
                     + " FROM student s,parent p;";
         }
-
+ 
+        public String updateStudentClass(){
+                return "UPDATE student SET " +
+                         " class_id = " +"'"+this.classId+"'"+
+                        " WHERE student_id =" +"'"+ this.studentId + "'"+";";
+        }
+        
+       
 }

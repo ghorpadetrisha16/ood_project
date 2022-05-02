@@ -55,7 +55,7 @@ public class TeacherR extends javax.swing.JFrame {
 
         jLabel4.setText("Phone Number");
 
-        jLabel5.setText("jLabel5");
+        jLabel5.setText("Address");
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
