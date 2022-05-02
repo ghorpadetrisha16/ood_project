@@ -23,7 +23,7 @@ Team Members:
 
 Kriya Kothari (NUID:002923272)
 
-Vyshnavu P (NUID:002919813)
+Vyshnavi Pendru (NUID:002919813)
 
 Akanksha Pawar (NUID: 002928432)
 
