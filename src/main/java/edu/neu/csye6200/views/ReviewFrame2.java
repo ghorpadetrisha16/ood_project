@@ -168,11 +168,11 @@ public class ReviewFrame2 extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // Save info into DB
         try {
-        String teacherID = tId.getText();
-        String teacherRating = tRating.getText();
-        String year = yearRating.getText();
+        int teacherID = Integer.valueOf(tId.getText());
+        int teacherRating = Integer.valueOf(tRating.getText());
+        int year = Integer.valueOf(yearRating.getText());
         
-        Rating r = new Rating(Integer.valueOf(teacherID), Integer.valueOf(year), Integer.valueOf(teacherRating));
+        Rating r = new Rating(teacherID, year, teacherRating);
       
         DB db = DB.getObj();
         
