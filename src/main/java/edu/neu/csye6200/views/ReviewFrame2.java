@@ -194,18 +194,14 @@ public class ReviewFrame2 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void reviewAlertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reviewAlertActionPerformed
-        // TODO add your handling code here:
         try { 
         DB db = DB.getObj();
-         Date d=new Date();  
-        String year=String.valueOf(d.getYear()); 
-        
-        ResultSet rs = db.query("SELECT employee_id FROM rating WHERE year !="+year+";");
+        ResultSet rs = db.query("SELECT employee_id FROM rating WHERE year !="+Year.now()+";");
         ResultSetMetaData rsMetaData = rs.getMetaData();
         int columnCount = rsMetaData.getColumnCount();
         String str="";
             while(rs.next()){
-                str = str +  String.valueOf(rs.getObject(1));
+                str = str + "," +  String.valueOf(rs.getObject(1));
              for (int i = 2; i <= columnCount; i++) {
         str = str + ","+ String.valueOf(rs.getObject(i));
     }
@@ -215,9 +211,7 @@ public class ReviewFrame2 extends javax.swing.JFrame {
              JOptionPane.showMessageDialog(r2, "The teachers not reviewed yet are: "+str);
         } catch (SQLException ex) {
             Logger.getLogger(ReviewFrame2.class.getName()).log(Level.SEVERE, null, ex);
-        }
-            
-           
+        }   
        
     }//GEN-LAST:event_reviewAlertActionPerformed
 
