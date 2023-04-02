@@ -20,6 +20,7 @@ Compile and Build the Project
 
 
 Team Members:
+Trisha Ghorpade (NUID:002920687)
 
 Kriya Kothari (NUID:002923272)
 
